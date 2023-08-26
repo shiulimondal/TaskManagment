@@ -37,6 +37,7 @@ const MyProjectCard = () => {
 
             </View>
 
+
         </Card>
     );
 };
@@ -65,8 +66,8 @@ const styles = StyleSheet.create({
         backgroundColor: 'rgba(255, 255, 255, 0.2)',
         alignItems: 'center',
         justifyContent: 'center',
-        top:moderateScale(15),
-        left:moderateScale(15)
+        top: moderateScale(15),
+        left: moderateScale(15)
     },
     high_txt: {
         fontFamily: FONTS.medium,
