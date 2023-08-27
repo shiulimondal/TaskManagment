@@ -1,6 +1,6 @@
 //import liraries
 import React, { Component } from 'react';
-import { View, Text, StyleSheet, TouchableOpacity, FlatList } from 'react-native';
+import { View, Text, StyleSheet, TouchableOpacity, FlatList, ScrollView } from 'react-native';
 import { Container, Icon, useTheme } from 'react-native-basic-elements';
 import HomeHeader from '../../Components/Header/HomeHeader';
 import { moderateScale } from '../../Constants/PixelRatio';
@@ -47,18 +47,29 @@ const Home = () => {
     return (
         <Container>
             <HomeHeader />
+            <ScrollView
+            showsVerticalScrollIndicator={false}
+            >
             <View style={{
-                marginHorizontal: moderateScale(15)
+                marginHorizontal: moderateScale(15),
             }}>
-                <FlatList
+
+                {
+                    projectData.map((item, index)=>{
+                        return(
+                            <HomeCard item={item} keyi={index} />
+                        )
+                    })
+                }
+                {/* <FlatList
                     showsVerticalScrollIndicator={false}
                     data={projectData}
                     renderItem={({ item, index }) => {
                         return <HomeCard item={item} index={index} />;
                     }}
-                />
+                /> */}
             </View>
-
+            </ScrollView>
             <TouchableOpacity
                 onPress={() => NavigationService.navigate('AddProject')}
                 style={{

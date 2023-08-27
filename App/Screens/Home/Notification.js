@@ -6,6 +6,7 @@ import ScreenHeader from '../../Components/Header/ScreenHeader';
 import NotificationCard from '../../Components/HomeCard/NotificationCard';
 import { moderateScale } from '../../Constants/PixelRatio';
 import NotificationSecondCard from '../../Components/HomeCard/NotificationSecodCard';
+import { ReactReduxContext } from 'react-redux';
 
 // create a component
 const Notification = () => {
@@ -54,32 +55,32 @@ const Notification = () => {
     return (
         <Container>
             <ScreenHeader title=' All Notifications' showIcon={true} />
-            <ScrollView 
-            showsVerticalScrollIndicator={false}
+            <ScrollView
+                showsVerticalScrollIndicator={false}
             >
                 <View style={{
                     marginHorizontal: moderateScale(15)
                 }}>
-                    <FlatList
-                        showsVerticalScrollIndicator={false}
-                        data={notificationData}
-                        renderItem={({ item, index }) => {
-                            return <NotificationCard item={item} index={index} />;
-                        }}
-                    />
+                    {
+                        notificationData.map((item, index) => {
+                            return (
+                                <NotificationCard item={item} key={index} />
+                            )
+                        })
+                    }
                 </View>
 
                 <View style={{
                     marginHorizontal: moderateScale(15),
-                    marginBottom:moderateScale(20)
+                    marginBottom: moderateScale(20)
                 }}>
-                    <FlatList
-                        showsVerticalScrollIndicator={false}
-                        data={secondnotificationData}
-                        renderItem={({ item, index }) => {
-                            return <NotificationSecondCard item={item} index={index} />;
-                        }}
-                    />
+                    {
+                        secondnotificationData.map((item, index) => {
+                            return (
+                                <NotificationSecondCard item={item} key={index} />
+                            )
+                        })
+                    }
                 </View>
             </ScrollView>
         </Container>

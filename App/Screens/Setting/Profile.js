@@ -1,38 +1,59 @@
 //import liraries
 import React, { Component, useState } from 'react';
-import { View, Text, StyleSheet, Image, TextInput, Dimensions, VirtualizedList } from 'react-native';
-import { AppButton, AppTextInput, CheckBox, Container, StatusBar, useTheme } from 'react-native-basic-elements';
-import { FONTS } from '../../Constants/Fonts';
+import { View, Text, StyleSheet, Image, TextInput, Dimensions } from 'react-native';
+import { AppButton, AppTextInput, Container, Icon, useTheme } from 'react-native-basic-elements';
+import ScreenHeader from '../../Components/Header/ScreenHeader';
 import { moderateScale } from '../../Constants/PixelRatio';
+import { FONTS } from '../../Constants/Fonts';
 import { KeyboardAwareScrollView } from 'react-native-keyboard-aware-scroll-view';
-import NavigationService from '../../Services/Navigation';
 
 const { height, width } = Dimensions.get('window')
 // create a component
-const Register = () => {
+const Profile = () => {
     const colors = useTheme()
     const [text, onChangeText] = useState();
-    const [check, setCheck] = useState(false);
     return (
         <Container>
-            <StatusBar
-                backgroundColor={colors.primaryThemeColor}
-                barStyle={'dark-content'}
-            />
+            <ScreenHeader title='Profile' showIcon={true} />
+
             <KeyboardAwareScrollView
                 showsVerticalScrollIndicator={false}
             >
-                <Image
-                    source={require('../../Assets/images/Logo.png')}
-                    style={{
-                        ...styles.logo_sty
-                    }}
-                />
+
+                <View style={{
+                    alignItems: 'center',
+                    marginTop: moderateScale(20)
+                }}>
+                    <View style={{
+                        ...styles.user_circle,
+                        backgroundColor: "#D9D9D9"
+                    }}>
+                        <Image
+                            source={require('../../Assets/images/home_user.png')}
+                            style={{
+                                height: moderateScale(40),
+                                width: moderateScale(40)
+                            }}
+                        />
+                        <View style={{
+                            ...styles.camera_circle,
+                            backgroundColor: colors.primaryThemeColor
+                        }}>
+                            <Image
+                                source={require('../../Assets/images/camera.png')}
+                                style={{
+                                    height: moderateScale(13),
+                                    width: moderateScale(14.5)
+                                }}
+                            />
+                        </View>
+                    </View>
+                </View>
 
                 <Text style={{
-                    ...styles.heading_txt,
-                    color: colors.primaryFontColor
-                }}>Create new account</Text>
+                    ...styles.upload_txt,
+                    color: colors.boldTextColor
+                }}>Update Profile picture</Text>
 
                 <View style={{
                     marginTop: moderateScale(25)
@@ -101,6 +122,7 @@ const Register = () => {
                     </View>
                 </View>
 
+
                 <View style={{
                     marginTop: moderateScale(15)
                 }}>
@@ -136,7 +158,7 @@ const Register = () => {
                 </View>
 
                 <AppTextInput
-                    title='Type Password'
+                    title='Address'
                     titleStyle={{
                         ...styles.Email_id_txt,
                         marginLeft: moderateScale(0),
@@ -153,12 +175,16 @@ const Register = () => {
                         ...styles.inputContainer_sty,
                         backgroundColor: colors.secondaryThemeColor
                     }}
-                    placeholder="Enter your password"
+                    placeholder="Type your Address"
+                    rightAction={<Icon
+                        name='location'
+                        type='EvilIcon'
+                    />}
 
                 />
 
                 <AppTextInput
-                    title='Re-Type Password'
+                    title='Postal code'
                     titleStyle={{
                         ...styles.Email_id_txt,
                         marginLeft: moderateScale(0),
@@ -175,12 +201,13 @@ const Register = () => {
                         ...styles.inputContainer_sty,
                         backgroundColor: colors.secondaryThemeColor
                     }}
-                    placeholder="Enter your password"
-
+                    placeholder="Type your postal code"
+                    keyboardType='number-pad'
                 />
 
+
                 <AppButton
-                    title="Register"
+                    title="Save"
                     textStyle={{
                         ...styles.button_txt,
                         color: colors.primaryThemeColor
@@ -190,44 +217,6 @@ const Register = () => {
                     }}
                     onPress={() => NavigationService.navigate('Login')}
                 />
-                <View style={{
-                    alignItems: 'center',
-                    marginTop: moderateScale(15),
-                    marginBottom: moderateScale(20)
-                }}>
-                    <View style={{
-                        flexDirection: 'row',
-                        alignItems: 'center',
-                    }}>
-                        <CheckBox
-                            checked={check}
-                            onChange={(val) => setCheck(val)}
-                            size={17}
-                            activeColor={colors.buttonColor}
-                            containerStyle={{ borderWidth: 1 }}
-                        />
-                        <Text style={{
-                            ...styles.termCondition_txt,
-                            color: colors.primaryFontColor
-                        }}>Agreed Our <Text style={{
-                            color: colors.buttonColor
-                        }}>Terms</Text> & <Text style={{
-                            color: colors.buttonColor
-                        }}>Condition</Text> Polcy</Text>
-                    </View>
-
-                    <Text
-                        onPress={() => NavigationService.navigate('Login')}
-                        style={{
-                            ...styles.termCondition_txt,
-                            marginTop: moderateScale(15),
-                            color: colors.primaryFontColor
-                        }}> Already Have an account? <Text style={{
-                            color: colors.buttonColor
-                        }}>Login</Text></Text>
-                </View>
-
-
             </KeyboardAwareScrollView>
         </Container>
     );
@@ -235,17 +224,27 @@ const Register = () => {
 
 // define your styles
 const styles = StyleSheet.create({
-    logo_sty: {
-        resizeMode: 'contain',
-        height: moderateScale(80),
-        alignSelf: 'center',
-        marginTop: moderateScale(60)
+    user_circle: {
+        height: moderateScale(70),
+        width: moderateScale(70),
+        borderRadius: moderateScale(35),
+        alignItems: 'center',
+        justifyContent: 'center',
     },
-    heading_txt: {
-        textAlign: 'center',
+    camera_circle: {
+        height: moderateScale(26),
+        width: moderateScale(26),
+        borderRadius: moderateScale(13),
+        alignItems: 'center',
+        justifyContent: 'center',
+        position: 'absolute',
+        bottom: -15,
+    },
+    upload_txt: {
+        fontFamily: FONTS.semibold,
+        fontSize: moderateScale(14),
         marginTop: moderateScale(20),
-        fontFamily: FONTS.bold,
-        fontSize: moderateScale(22)
+        textAlign: 'center'
     },
     Email_id_txt: {
         fontFamily: FONTS.semibold,
@@ -290,14 +289,10 @@ const styles = StyleSheet.create({
         height: moderateScale(45),
         borderRadius: moderateScale(5),
         width: '92%',
-        alignSelf: 'center'
-    },
-    termCondition_txt: {
-        fontFamily: FONTS.medium,
-        fontSize: moderateScale(12),
-        marginLeft: moderateScale(7)
+        alignSelf: 'center',
+        marginBottom:moderateScale(20)
     },
 });
 
 //make this component available to the app
-export default Register;
+export default Profile;

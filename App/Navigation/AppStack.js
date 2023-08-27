@@ -6,6 +6,8 @@ import { useSelector } from 'react-redux';
 import BottomTab from './BottomTab';
 import AddProject from '../Screens/Home/AddProject';
 import Notification from '../Screens/Home/Notification';
+import Subcriptionplan from '../Screens/Setting/Subcriptionplan';
+import Profile from '../Screens/Setting/Profile';
 
 
 const Stack = createStackNavigator();
@@ -23,8 +25,12 @@ const AppStack = () => {
             }}
         >
             <Stack.Screen name="BottomTab" component={BottomTab} />
+            {/* Home */}
             <Stack.Screen name="AddProject" component={AddProject} />
             <Stack.Screen name="Notification" component={Notification} />
+            {/* setting */}
+            <Stack.Screen name="Subcriptionplan" component={Subcriptionplan} />
+            <Stack.Screen name="Profile" component={Profile} />
         </Stack.Navigator>
     );
 };

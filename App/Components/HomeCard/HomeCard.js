@@ -41,6 +41,7 @@ const HomeCard = ({item}) => {
                 <Text
                     onPress={() => setShowText(!showText)}
                     style={{
+                        fontFamily:FONTS.semibold,
                         color: !showText ? colors.buttonColor : '#fff'
                     }}>Show more</Text></Text>
 
@@ -56,6 +57,7 @@ const HomeCard = ({item}) => {
                         <Text
                             onPress={() => setShowText(!showText)}
                             style={{
+                                fontFamily:FONTS.semibold,
                                 color: colors.buttonColor
                             }}>Show less</Text></Text>
                     :
