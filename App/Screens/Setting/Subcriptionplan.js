@@ -12,6 +12,20 @@ const Subcriptionplan = () => {
     const [select, setSelect] = useState(false)
     const [selected, setSelected] = useState(false);
     const [selectedweek, setSelectedweek] = useState(false);
+    const planPiontsData = [
+        {
+            plan_text: 'Lorem ipsum dolor sit amet consectetur. '
+        },
+        {
+            plan_text: 'Lorem ipsum dolor sit amet consectetur. '
+        },
+        {
+            plan_text: 'Lorem ipsum dolor sit amet consectetur. '
+        },
+        {
+            plan_text: 'Lorem ipsum dolor sit amet consectetur. '
+        },
+    ]
     return (
         <Container>
             <ScreenHeader title='Subscription Plan' showIcon={true} />
@@ -50,8 +64,8 @@ const Subcriptionplan = () => {
                     }}>£ 16</Text>
                 </View>
                 <Text style={{
-                   ...styles.save_txt,
-                   color:colors.boldTextColor
+                    ...styles.save_txt,
+                    color: colors.boldTextColor
                 }}>Save 10%</Text>
 
                 <Card style={{
@@ -91,14 +105,14 @@ const Subcriptionplan = () => {
                                     </Pressable>
 
                                     :
-                                    <Pressable 
-                                    onPress={() => setSelect(!select)}
+                                    <Pressable
+                                        onPress={() => setSelect(!select)}
                                     >
-                                    <Icon
-                                        name='up'
-                                        type='AntDesign'
-                                        size={14}
-                                    />
+                                        <Icon
+                                            name='up'
+                                            type='AntDesign'
+                                            size={14}
+                                        />
                                     </Pressable>
                             }
 
@@ -119,97 +133,37 @@ const Subcriptionplan = () => {
                                     }}>Lorem ipsum dolor sit amet consectetur. Fames vestibulum nisl tincidunt
                                     augue sed et nibh orci porttitor.</Text>
 
-                                <View style={{
-                                    ...styles.check_box_view
-                                }}>
-                                    <View style={{
-                                        ...styles.check_box,
-                                        borderColor: colors.primaryThemeColor
-                                    }}>
-                                        <Icon
-                                            name='check'
-                                            type='AntDesign'
-                                            size={10}
-                                            color={colors.primaryThemeColor}
-                                        />
-                                    </View>
-                                    <Text style={{
-                                        ...styles.demo_txt,
-                                        fontFamily: FONTS.regular,
-                                        marginTop: 0,
-                                        marginLeft: moderateScale(10),
-                                        color: colors.primaryThemeColor
-                                    }}>Lorem ipsum dolor sit amet consectetur. </Text>
-                                </View>
+                                {
+                                    planPiontsData.map((item, index) => {
+                                        return (
+                                            <View
+                                                key={index}
+                                                style={{
+                                                    ...styles.check_box_view
+                                                }}>
+                                                <View style={{
+                                                    ...styles.check_box,
+                                                    borderColor: colors.primaryThemeColor
+                                                }}>
+                                                    <Icon
+                                                        name='check'
+                                                        type='AntDesign'
+                                                        size={10}
+                                                        color={colors.primaryThemeColor}
+                                                    />
+                                                </View>
+                                                <Text style={{
+                                                    ...styles.demo_txt,
+                                                    fontFamily: FONTS.regular,
+                                                    marginTop: 0,
+                                                    marginLeft: moderateScale(10),
+                                                    color: colors.primaryThemeColor
+                                                }}>{item.plan_text}</Text>
+                                            </View>
+                                        )
+                                    })
+                                }
 
-                                <View style={{
-                                    ...styles.check_box_view
-                                }}>
-                                    <View style={{
-                                        ...styles.check_box,
-                                        borderColor: colors.primaryThemeColor
-                                    }}>
-                                        <Icon
-                                            name='check'
-                                            type='AntDesign'
-                                            size={10}
-                                            color={colors.primaryThemeColor}
-                                        />
-                                    </View>
-                                    <Text style={{
-                                        ...styles.demo_txt,
-                                        fontFamily: FONTS.regular,
-                                        marginTop: 0,
-                                        marginLeft: moderateScale(10),
-                                        color: colors.primaryThemeColor
-                                    }}>Lorem ipsum dolor sit amet consectetur. </Text>
-                                </View>
-
-                                <View style={{
-                                    ...styles.check_box_view
-                                }}>
-                                    <View style={{
-                                        ...styles.check_box,
-                                        borderColor: colors.primaryThemeColor
-                                    }}>
-                                        <Icon
-                                            name='check'
-                                            type='AntDesign'
-                                            size={10}
-                                            color={colors.primaryThemeColor}
-                                        />
-                                    </View>
-                                    <Text style={{
-                                        ...styles.demo_txt,
-                                        fontFamily: FONTS.regular,
-                                        marginTop: 0,
-                                        marginLeft: moderateScale(10),
-                                        color: colors.primaryThemeColor
-                                    }}>Lorem ipsum dolor sit amet consectetur. </Text>
-                                </View>
-
-                                <View style={{
-                                    ...styles.check_box_view
-                                }}>
-                                    <View style={{
-                                        ...styles.check_box,
-                                        borderColor: colors.primaryThemeColor
-                                    }}>
-                                        <Icon
-                                            name='check'
-                                            type='AntDesign'
-                                            size={10}
-                                            color={colors.primaryThemeColor}
-                                        />
-                                    </View>
-                                    <Text style={{
-                                        ...styles.demo_txt,
-                                        fontFamily: FONTS.regular,
-                                        marginTop: 0,
-                                        marginLeft: moderateScale(10),
-                                        color: colors.primaryThemeColor
-                                    }}>Lorem ipsum dolor sit amet consectetur. </Text>
-                                </View>
 
                                 <AppButton
                                     title="Buy now"
@@ -258,8 +212,8 @@ const Subcriptionplan = () => {
                 </View>
 
                 <Text style={{
-                   ...styles.save_txt,
-                   color:colors.boldTextColor
+                    ...styles.save_txt,
+                    color: colors.boldTextColor
                 }}>Save 10%</Text>
 
                 <Card style={{
@@ -299,14 +253,14 @@ const Subcriptionplan = () => {
                                     </Pressable>
 
                                     :
-                                    <Pressable 
-                                    onPress={() => setSelectedweek(!selectedweek)}
+                                    <Pressable
+                                        onPress={() => setSelectedweek(!selectedweek)}
                                     >
-                                    <Icon
-                                        name='up'
-                                        type='AntDesign'
-                                        size={14}
-                                    />
+                                        <Icon
+                                            name='up'
+                                            type='AntDesign'
+                                            size={14}
+                                        />
                                     </Pressable>
                             }
 
@@ -327,97 +281,37 @@ const Subcriptionplan = () => {
                                     }}>Lorem ipsum dolor sit amet consectetur. Fames vestibulum nisl tincidunt
                                     augue sed et nibh orci porttitor.</Text>
 
-                                <View style={{
-                                    ...styles.check_box_view
-                                }}>
-                                    <View style={{
-                                        ...styles.check_box,
-                                        borderColor: colors.primaryThemeColor
-                                    }}>
-                                        <Icon
-                                            name='check'
-                                            type='AntDesign'
-                                            size={10}
-                                            color={colors.primaryThemeColor}
-                                        />
-                                    </View>
-                                    <Text style={{
-                                        ...styles.demo_txt,
-                                        fontFamily: FONTS.regular,
-                                        marginTop: 0,
-                                        marginLeft: moderateScale(10),
-                                        color: colors.primaryThemeColor
-                                    }}>Lorem ipsum dolor sit amet consectetur. </Text>
-                                </View>
 
-                                <View style={{
-                                    ...styles.check_box_view
-                                }}>
-                                    <View style={{
-                                        ...styles.check_box,
-                                        borderColor: colors.primaryThemeColor
-                                    }}>
-                                        <Icon
-                                            name='check'
-                                            type='AntDesign'
-                                            size={10}
-                                            color={colors.primaryThemeColor}
-                                        />
-                                    </View>
-                                    <Text style={{
-                                        ...styles.demo_txt,
-                                        fontFamily: FONTS.regular,
-                                        marginTop: 0,
-                                        marginLeft: moderateScale(10),
-                                        color: colors.primaryThemeColor
-                                    }}>Lorem ipsum dolor sit amet consectetur. </Text>
-                                </View>
-
-                                <View style={{
-                                    ...styles.check_box_view
-                                }}>
-                                    <View style={{
-                                        ...styles.check_box,
-                                        borderColor: colors.primaryThemeColor
-                                    }}>
-                                        <Icon
-                                            name='check'
-                                            type='AntDesign'
-                                            size={10}
-                                            color={colors.primaryThemeColor}
-                                        />
-                                    </View>
-                                    <Text style={{
-                                        ...styles.demo_txt,
-                                        fontFamily: FONTS.regular,
-                                        marginTop: 0,
-                                        marginLeft: moderateScale(10),
-                                        color: colors.primaryThemeColor
-                                    }}>Lorem ipsum dolor sit amet consectetur. </Text>
-                                </View>
-
-                                <View style={{
-                                    ...styles.check_box_view
-                                }}>
-                                    <View style={{
-                                        ...styles.check_box,
-                                        borderColor: colors.primaryThemeColor
-                                    }}>
-                                        <Icon
-                                            name='check'
-                                            type='AntDesign'
-                                            size={10}
-                                            color={colors.primaryThemeColor}
-                                        />
-                                    </View>
-                                    <Text style={{
-                                        ...styles.demo_txt,
-                                        fontFamily: FONTS.regular,
-                                        marginTop: 0,
-                                        marginLeft: moderateScale(10),
-                                        color: colors.primaryThemeColor
-                                    }}>Lorem ipsum dolor sit amet consectetur. </Text>
-                                </View>
+                                {
+                                    planPiontsData.map((item, index) => {
+                                        return (
+                                            <View
+                                                key={index}
+                                                style={{
+                                                    ...styles.check_box_view
+                                                }}>
+                                                <View style={{
+                                                    ...styles.check_box,
+                                                    borderColor: colors.primaryThemeColor
+                                                }}>
+                                                    <Icon
+                                                        name='check'
+                                                        type='AntDesign'
+                                                        size={10}
+                                                        color={colors.primaryThemeColor}
+                                                    />
+                                                </View>
+                                                <Text style={{
+                                                    ...styles.demo_txt,
+                                                    fontFamily: FONTS.regular,
+                                                    marginTop: 0,
+                                                    marginLeft: moderateScale(10),
+                                                    color: colors.primaryThemeColor
+                                                }}>{item.plan_text}</Text>
+                                            </View>
+                                        )
+                                    })
+                                }
 
                                 <AppButton
                                     title="Buy now"
@@ -507,10 +401,10 @@ const styles = StyleSheet.create({
         width: '100%',
         alignSelf: 'center'
     },
-    save_txt:{
-        fontFamily:FONTS.semibold,
-        fontSize:moderateScale(13),
-        marginHorizontal:moderateScale(15)
+    save_txt: {
+        fontFamily: FONTS.semibold,
+        fontSize: moderateScale(13),
+        marginHorizontal: moderateScale(15)
     }
 })
 

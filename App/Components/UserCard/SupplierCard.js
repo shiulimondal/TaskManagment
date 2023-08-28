@@ -43,9 +43,6 @@ const SupplierCard = ({ item, toggleModal }) => {
                 </View>
 
                 <TouchableOpacity
-                    // onPress={() => {
-                    //     toggleModal()
-                    // }}
                     onPress={toggleModal}
                     style={{
                         ...styles.viewProfile_box,

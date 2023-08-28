@@ -6,7 +6,7 @@ import { moderateScale } from '../../Constants/PixelRatio';
 import { FONTS } from '../../Constants/Fonts';
 
 // create a component
-const LanderCard = ({ item, toggleModal }) => {
+const LanderCard = ({ item, NexttoggleModal }) => {
     const colors = useTheme()
     return (
         <Card style={{
@@ -39,7 +39,7 @@ const LanderCard = ({ item, toggleModal }) => {
                 </View>
 
                 <TouchableOpacity
-                    // onPress={toggleModal}
+                    onPress={NexttoggleModal}
                     style={{
                         ...styles.viewProfile_box,
                         backgroundColor: 'rgba(6, 109, 230, 0.1)'

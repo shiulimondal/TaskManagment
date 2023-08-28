@@ -1,21 +1,27 @@
 //import liraries
 import React, { Component, useState } from 'react';
-import { View, Text, StyleSheet, ScrollView  } from 'react-native';
-import { Container, useTheme} from 'react-native-basic-elements';
+import { View, Text, StyleSheet, ScrollView, Dimensions } from 'react-native';
+import { Container, useTheme } from 'react-native-basic-elements';
 import ScreenHeader from '../../Components/Header/ScreenHeader';
 import { FONTS } from '../../Constants/Fonts';
 import { moderateScale } from '../../Constants/PixelRatio';
 import SupplierCard from '../../Components/UserCard/SupplierCard';
 import Modal from "react-native-modal";
 import LanderCard from '../../Components/UserCard/LanderCard';
+import SupplierModalCard from '../../Components/UserCard/SupplierModalCard';
+import LanderModalCard from '../../Components/UserCard/LanderModalCard';
 
-
+const { height, width } = Dimensions.get('window')
 // create a component
 const User = () => {
     const colors = useTheme()
     const [isModalVisible, setModalVisible] = useState(false);
     const toggleModal = () => {
         setModalVisible(!isModalVisible);
+    };
+    const [isNextModalVisible, setNextModalVisible] = useState(false);
+    const NexttoggleModal = () => {
+        setNextModalVisible(!isNextModalVisible);
     };
     const supplierData = [
         {
@@ -40,12 +46,12 @@ const User = () => {
     const landerData = [
         {
             img: (require('../../Assets/images/lander.png')),
-            name: 'Mira Lipshutz',     
+            name: 'Mira Lipshutz',
             number: '123XXXXXX'
         },
         {
             img: (require('../../Assets/images/lander.png')),
-            name: 'Mira Lipshutz',     
+            name: 'Mira Lipshutz',
             number: '123XXXXXX'
         },
         {
@@ -82,7 +88,9 @@ const User = () => {
                     {
                         supplierData.map((item, index) => {
                             return (
-                                <SupplierCard item={item} key={index} />
+                                <SupplierCard
+                                    toggleModal={() => toggleModal()}
+                                    item={item} key={index} />
                             )
                         })
                     }
@@ -111,11 +119,14 @@ const User = () => {
                     {
                         landerData.map((item, index) => {
                             return (
-                                <LanderCard item={item} key={index} />
+                                <LanderCard 
+                                NexttoggleModal={() => NexttoggleModal()}
+                                item={item} key={index} />
                             )
                         })
                     }
                 </View>
+
 
             </ScrollView>
             <Modal
@@ -129,18 +140,29 @@ const User = () => {
                 onBackButtonPress={() => setModalVisible(false)}
                 onBackdropPress={() => setModalVisible(false)}
             >
-                {/* <View style={{
-                    ...styles.first_modal_view,
-                    backgroundColor: colors.primaryThemeColor
-                }}>
-                    <Text style={{
-                        ...styles.isModalVisible_txt,
-                        color: colors.primaryFontColor
-                    }}>Expected commission per month (₹30000-₹80000)</Text>
-                </View> */}
+                
 
+                    <SupplierModalCard />
 
             </Modal>
+
+            <Modal
+                isVisible={isNextModalVisible}
+                style={{
+                    justifyContent: 'center',
+                    marginHorizontal: moderateScale(20),
+                    marginBottom: moderateScale(50),
+                    // backgroundColor: 'blue'
+                }}
+                onBackButtonPress={() => setNextModalVisible(false)}
+                onBackdropPress={() => setNextModalVisible(false)}
+            >
+                
+
+                    <LanderModalCard />
+
+            </Modal>
+
 
         </Container>
     );
