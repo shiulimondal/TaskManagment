@@ -168,8 +168,8 @@ const styles = StyleSheet.create({
         marginRight:moderateScale(5)
     },
     demo_txt: {
-        fontFamily: FONTS.medium,
-        fontSize: moderateScale(8),
+        fontFamily: FONTS.semibold,
+        fontSize: moderateScale(9),
         marginTop: moderateScale(7)
     },
     card_sty: {

@@ -1,6 +1,6 @@
 //import liraries
 import React, { Component, useState } from 'react';
-import { View, Text, StyleSheet, Pressable } from 'react-native';
+import { View, Text, StyleSheet, Pressable, ScrollView } from 'react-native';
 import { AppButton, Card, CheckBox, Container, Icon, RadioButton, useTheme } from 'react-native-basic-elements';
 import ScreenHeader from '../../Components/Header/ScreenHeader';
 import { moderateScale } from '../../Constants/PixelRatio';
@@ -29,6 +29,9 @@ const Subcriptionplan = () => {
     return (
         <Container>
             <ScreenHeader title='Subscription Plan' showIcon={true} />
+            <ScrollView 
+            showsVerticalScrollIndicator={false}
+            >
             <Text style={{
                 ...styles.Annual_Subscription_txt,
                 color: colors.primaryFontColor
@@ -154,7 +157,6 @@ const Subcriptionplan = () => {
                                                 </View>
                                                 <Text style={{
                                                     ...styles.demo_txt,
-                                                    fontFamily: FONTS.regular,
                                                     marginTop: 0,
                                                     marginLeft: moderateScale(10),
                                                     color: colors.primaryThemeColor
@@ -191,6 +193,7 @@ const Subcriptionplan = () => {
                 shadow={false}
                 style={{
                     ...styles.card_sty,
+                    marginBottom:moderateScale(20),
                     backgroundColor: colors.primaryThemeColor,
                     borderColor: colors.borderColor
                 }}>
@@ -303,7 +306,6 @@ const Subcriptionplan = () => {
                                                 </View>
                                                 <Text style={{
                                                     ...styles.demo_txt,
-                                                    fontFamily: FONTS.regular,
                                                     marginTop: 0,
                                                     marginLeft: moderateScale(10),
                                                     color: colors.primaryThemeColor
@@ -333,6 +335,7 @@ const Subcriptionplan = () => {
 
                 </Card>
             </Card>
+            </ScrollView>
         </Container>
     );
 };
@@ -373,14 +376,14 @@ const styles = StyleSheet.create({
         justifyContent: 'center'
     },
     demo_txt: {
-        fontFamily: FONTS.medium,
-        fontSize: moderateScale(8),
+        fontFamily: FONTS.semibold,
+        fontSize: moderateScale(9),
         maxWidth: '95%',
     },
     check_box: {
         height: moderateScale(14),
         width: moderateScale(14),
-        borderWidth: 0.3,
+        borderWidth: 0.5,
         borderRadius: moderateScale(7),
         alignItems: 'center',
         justifyContent: 'center'

@@ -17,7 +17,7 @@ const App = () => {
 
     setTimeout(() => {
       setSplash(false)
-    }, 400);
+    }, 4000);
   }, [])
   return (
     <View

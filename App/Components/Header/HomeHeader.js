@@ -95,10 +95,10 @@ const styles = StyleSheet.create({
         backgroundColor: '#EBEBEB'
     },
     inputContainer_sty: {
-        borderRadius: moderateScale(0),
+        borderRadius: moderateScale(2),
         borderWidth: 0,
-        elevation: 0.5,
-        height: moderateScale(55),
+        elevation: 2,
+        height: moderateScale(50),
         width: moderateScale(235),
     },
     iconButton: {
