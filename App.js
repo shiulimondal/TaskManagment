@@ -6,17 +6,17 @@ import { NavigationContainer } from '@react-navigation/native';
 import { createStackNavigator } from '@react-navigation/stack';
 import { Dimensions, Image, View } from 'react-native';
 import NavigationService from './App/Services/Navigation';
+import RNBootSplash from "react-native-bootsplash";
 
 
 const Stack = createStackNavigator();
-const {height, width} = Dimensions.get('screen')
+const { height, width } = Dimensions.get('screen')
 const App = () => {
   const [isDark, setIsDark] = useState(false);
-  const [splash, setSplash] = useState(true)
-  useEffect(() => {
 
+  useEffect(() => {
     setTimeout(() => {
-      setSplash(false)
+      RNBootSplash.hide()
     }, 4000);
   }, [])
   return (
@@ -29,69 +29,60 @@ const App = () => {
         backgroundColor={'transparent'}
         translucent={true}
       />
-      {splash ?
-        <Image
-          source={require('./logo.png')}
-          style={{
-            height: height,
-            width: width 
-          }}
-          resizeMode='cover'
-        />
-        :
-        <Theme.Provider
-          theme={{
-            light: {
-              primaryThemeColor: '#fff',
-              secondaryThemeColor: '#fff',
-              primaryFontColor: '#263238',
-              secondaryFontColor: 'rgba(0, 0, 0, 0.6)',
-              boldTextColor: '#000000',
-              cardColor: '#A7AEC1',
-              headerColor: '#fff',
-              pageBackgroundColor: '#fff',
-              tabBarColor: '#fff',
-              shadowColor: '#999',
-              statusBarStyle: 'dark-content',
-              buttonColor: '#066DE6',
-              borderColor: '#999'
-            },
-            dark: {
-              primaryThemeColor: 'black',
-              secondaryThemeColor: '#000',
-              primaryFontColor: '#263238',
-              secondaryFontColor: 'rgba(0, 0, 0, 0.6)',
-              boldTextColor: '#000000',
-              cardColor: '#A7AEC1',
-              headerColor: '#000',
-              pageBackgroundColor: '#0A0A0A',
-              tabBarColor: '#000',
-              shadowColor: '#1E1E1E',
-              statusBarStyle: "light-content",
-              buttonColor: '#066DE6',
-              borderColor: '#999'
-            },
-          }}
-          mode={isDark ? 'dark' : 'light'}
-        >
-          {/* <Test
+
+      <Theme.Provider
+        theme={{
+          light: {
+            primaryThemeColor: '#fff',
+            secondaryThemeColor: '#fff',
+            primaryFontColor: '#263238',
+            secondaryFontColor: 'rgba(0, 0, 0, 0.6)',
+            boldTextColor: '#000000',
+            cardColor: '#A7AEC1',
+            headerColor: '#fff',
+            pageBackgroundColor: '#fff',
+            tabBarColor: '#fff',
+            shadowColor: '#999',
+            statusBarStyle: 'dark-content',
+            buttonColor: '#066DE6',
+            borderColor: '#999'
+          },
+          dark: {
+            primaryThemeColor: 'black',
+            secondaryThemeColor: '#000',
+            primaryFontColor: '#263238',
+            secondaryFontColor: 'rgba(0, 0, 0, 0.6)',
+            boldTextColor: '#000000',
+            cardColor: '#A7AEC1',
+            headerColor: '#000',
+            pageBackgroundColor: '#0A0A0A',
+            tabBarColor: '#000',
+            shadowColor: '#1E1E1E',
+            statusBarStyle: "light-content",
+            buttonColor: '#066DE6',
+            borderColor: '#999'
+          },
+        }}
+        mode={isDark ? 'dark' : 'light'}
+      >
+        {/* <Test
           onChange={() => setIsDark(!isDark)}
         /> */}
-          <NavigationContainer
-            ref={r => NavigationService.setTopLevelNavigator(r)}
+        <NavigationContainer
+          ref={r => NavigationService.setTopLevelNavigator(r)}
+        >
+          <Stack.Navigator
+            initialRouteName='AuthStack'
+            screenOptions={{
+              headerShown: false,
+            }}
           >
-            <Stack.Navigator
-              initialRouteName='AuthStack'
-              screenOptions={{
-                headerShown: false,
-              }}
-            >
-              <Stack.Screen name="AuthStack" component={AuthStack} />
-              <Stack.Screen name="AppStack" component={AppStack} />
-            </Stack.Navigator>
-          </NavigationContainer>
-        </Theme.Provider>
-      }
+            <Stack.Screen name="AuthStack" component={AuthStack} />
+            <Stack.Screen name="AppStack" component={AppStack} />
+          </Stack.Navigator>
+        </NavigationContainer>
+      </Theme.Provider>
+
     </View>
   )
 }
